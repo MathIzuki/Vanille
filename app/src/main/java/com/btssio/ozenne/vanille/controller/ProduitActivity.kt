@@ -2,18 +2,18 @@ package com.btssio.ozenne.vanille.controller
 
 import android.annotation.SuppressLint
 import android.content.Intent
-import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.util.Log
 import android.widget.Button
 import android.widget.EditText
 import android.widget.TextView
 import android.widget.Toast
+import androidx.appcompat.app.AppCompatActivity
 import com.btssio.ozenne.vanille.R
-import com.btssio.ozenne.vanille.model.Categorie
 import com.btssio.ozenne.vanille.model.Commande
-import com.btssio.ozenne.vanille.model.Produit
+import com.btssio.ozenne.vanille.model.Promotion
 import com.btssio.ozenne.vanille.repository.CatalogueRepository
+import java.time.LocalDate
 
 class ProduitActivity : AppCompatActivity() {
     @SuppressLint("MissingInflatedId", "SetTextI18n")
@@ -37,20 +37,22 @@ class ProduitActivity : AppCompatActivity() {
         val txtTotal = findViewById<TextView>(R.id.labelTotalCalc)
         val txtProduit = produitSelectionne.description
         val txtTitre = findViewById<TextView>(R.id.labelTitre)
+        val txtPromo = findViewById<TextView>(R.id.labelPromo)
         val btAjouter = findViewById<Button>(R.id.btAjouter)
         val btRevenir = findViewById<Button>(R.id.btRevenir)
         val btTerminer = findViewById<Button>(R.id.btTerminer)
-
+        val currentDate = LocalDate.now()
+        val prixApresRemise = produitSelectionne.getPrixApresRemise(currentDate)
         txtTitre.text = txtProduit.toString()
-        txtPu.text = produitSelectionne.prix.toString() + " € "
+        txtPu.text = String.format("%.2f €", prixApresRemise)
+        txtPromo.text = produitSelectionne.getPromoEtPrixHabituel(currentDate)
+
 
         //gestion du clic sur le bouton calculer
-        btCalculer.setOnClickListener(){
-            val qte = if(editQuantite.text.isEmpty()){0}
-                        else{ editQuantite.text.toString().toInt()}
-            val pu = produitSelectionne.prix.toString().toFloat()
-            val total = pu * qte
-            txtTotal.text = "$total € "
+        btCalculer.setOnClickListener {
+            val qte = if (editQuantite.text.isEmpty()) 0 else editQuantite.text.toString().toInt()
+            val total = prixApresRemise * qte
+            txtTotal.text = String.format("%.2f €", total)
         }
 
         btTerminer.setOnClickListener() {

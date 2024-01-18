@@ -16,5 +16,9 @@ abstract class ClientRepository {
         fun recupererLeClient(context : Context): Client? {
             return Serializer.deSerialize(nomFichier,context) as Client?
         }
+
+        fun effacerLeClient(context: Context) {
+            context.deleteFile(nomFichier)
+        }
     }
 }

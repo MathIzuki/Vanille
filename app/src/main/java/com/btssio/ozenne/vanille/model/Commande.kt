@@ -24,7 +24,7 @@ object Commande {
         // Parcours de la map (dictionnaire)
         for ((produit, quantite) in lignesCommande) {
             // Calcul du prix total pour chaque produit
-            total += produit.prix * quantite
+            total += produit.getPrixApresRemise(LocalDate.now()) * quantite
         }
 
         return total

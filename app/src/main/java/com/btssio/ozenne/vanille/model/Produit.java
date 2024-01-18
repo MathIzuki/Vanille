@@ -50,6 +50,38 @@ public class Produit implements Comparable<Produit>{
         return result;
     }
 
+    public String getPromoDetails(LocalDate date) {
+        for (Promotion promo : lesPromos) {
+            if ((promo.getDebutPromo().compareTo(date) <= 0) && (promo.getFinPromo().compareTo(date) >= 0)) {
+                return promo.getLibelle() + " : " + (int)(promo.getRemise() * 100) + "% de remise";
+            }
+        }
+        return ""; // Retourner une chaîne vide si aucune promotion n'est trouvée
+    }
+
+    public String getPromoEtPrixHabituel(LocalDate date) {
+        String detailsPromo = getPromoDetails(date);
+        if (!detailsPromo.isEmpty()) {
+            // Si une promotion est active, retournez les détails de la promo et le prix habituel
+            return detailsPromo + "\n Prix Habituel : " + String.format("%.2f €", prix);
+        } else {
+            // Si aucune promo n'est active, retournez uniquement les détails de la promo (chaîne vide)
+            return detailsPromo;
+        }
+    }
+
+
+    public float getPrixApresRemise(LocalDate date) {
+        for (Promotion promo : lesPromos) {
+            if ((promo.getDebutPromo().compareTo(date) <= 0) && (promo.getFinPromo().compareTo(date) >= 0)) {
+                return prix * (1 - promo.getRemise());
+            }
+        }
+        return prix; // Pas de promotion, retourner le prix normal
+    }
+
+
+
     /**
      * renvoie l'id la description et le prix du produit correspondant à la date
      * affiche le prix promotionnel suivi du mot PROMO lorsque le produit est en promotion

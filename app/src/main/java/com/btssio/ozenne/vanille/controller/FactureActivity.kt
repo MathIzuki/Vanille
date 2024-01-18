@@ -28,7 +28,8 @@ class FactureActivity : AppCompatActivity() {
         var txtMontant = findViewById<TextView>(R.id.factureTxtMontant)
         val btValider = findViewById<Button>(R.id.factureBtValider)
         val btModifier = findViewById<Button>(R.id.factureBtModifier)
-        txtMontant.text = commandeEnCours.getTotalCommande().toString() + " € "
+
+        txtMontant.text = String.format("%.2f €", commandeEnCours.getTotalCommande())
         //récupération du client
         val leClientRecupere = ClientRepository.recupererLeClient(this)
         Log.i("Client récupéré", leClientRecupere.toString())
@@ -57,7 +58,7 @@ class FactureActivity : AppCompatActivity() {
             val montantCommande = commandeEnCours.getTotalCommande()
 
             // Création et affichage du Toast
-            val toastMessage = "Votre commande d'un montant de $montantCommande € a bien été envoyée ! " +
+            val toastMessage = "Votre commande d'un montant de " + String.format("%.2f € ", montantCommande) + "a bien été envoyée ! " +
                     "Vous recevrez un mail de confirmation à l'adresse suivant : " + nouveauClient.mail
             Toast.makeText(this@FactureActivity, toastMessage, Toast.LENGTH_SHORT).show()
             Log.i("Valider","onClick"+ commandeEnCours.leClient.toString())
@@ -66,6 +67,8 @@ class FactureActivity : AppCompatActivity() {
         }
 
         btAnnuler.setOnClickListener() {
+            // Effacer les informations du client
+            ClientRepository.effacerLeClient(this);
             val intention = Intent(this, MainActivity::class.java)
             commandeEnCours.lignesCommande.clear()
             startActivity(intention)

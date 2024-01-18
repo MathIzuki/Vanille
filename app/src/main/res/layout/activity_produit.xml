@@ -1,0 +1,176 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".controller.ProduitActivity">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_marginStart="10dp"
+        android:layout_marginTop="45dp"
+        android:layout_marginEnd="10dp"
+        android:layout_marginBottom="10dp"
+        android:orientation="vertical"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="97dp"
+            android:orientation="vertical">
+
+            <TextView
+                android:id="@+id/labelTitre"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:textAlignment="center"
+                android:textSize="18sp" />
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="359dp"
+            android:orientation="vertical">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="355dp"
+                android:backgroundTint="#8F3D3D"
+                android:orientation="horizontal">
+
+                <LinearLayout
+                    android:layout_width="123dp"
+                    android:layout_height="102dp"
+                    android:orientation="vertical">
+
+                    <TextView
+                        android:id="@+id/labelQuantite"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:text="Quantité"
+                        android:textAlignment="center" />
+
+                    <EditText
+                        android:id="@+id/editQuantite"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:ems="10"
+                        android:inputType="number" />
+
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="131dp"
+                    android:layout_height="103dp"
+                    android:orientation="vertical">
+
+                    <TextView
+                        android:id="@+id/labelPU"
+                        android:layout_width="match_parent"
+                        android:layout_height="35dp"
+                        android:text="Prix unitaire"
+                        android:textAlignment="center" />
+
+                    <TextView
+                        android:id="@+id/produitTxtPU"
+                        android:layout_width="match_parent"
+                        android:layout_height="47dp"
+                        android:textAlignment="center" />
+
+                </LinearLayout>
+
+                <Button
+                    android:id="@+id/btCalculer"
+                    android:layout_width="0dp"
+                    android:layout_height="59dp"
+                    android:layout_weight="3"
+                    android:backgroundTint="#BABABA"
+                    android:text="@string/calculer"
+                    android:textColor="#303030" />
+
+            </LinearLayout>
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="86dp"
+            android:orientation="vertical">
+
+            <TextView
+                android:id="@+id/labelTotal"
+                android:layout_width="match_parent"
+                android:layout_height="16dp"
+                android:layout_weight="1"
+                android:text="Total "
+                android:textAlignment="center"
+                android:textSize="20sp" />
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:baselineAligned="false"
+                android:orientation="horizontal">
+
+                <LinearLayout
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:orientation="horizontal">
+
+                    <TextView
+                        android:id="@+id/labelTotalCalc"
+                        android:layout_width="wrap_content"
+                        android:layout_height="29dp"
+                        android:layout_weight="1"
+                        android:textAlignment="center"
+                        android:textSize="20sp" />
+
+                    <Button
+                        android:id="@+id/btAjouter"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:backgroundTint="#86C166"
+                        android:text="@string/ajouter" />
+                </LinearLayout>
+
+            </LinearLayout>
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="144dp"
+            android:orientation="vertical">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="86dp"
+                android:orientation="horizontal">
+
+                <Button
+                    android:id="@+id/btRevenir"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:backgroundTint="#FF7272"
+                    android:text="@string/bt_revenir"
+                    tools:text="@string/bt_revenir" />
+
+                <Button
+                    android:id="@+id/btTerminer"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:backgroundTint="#3CBFCC"
+                    android:text="@string/bt_terminercommande"
+                    tools:text="@string/bt_terminercommande" />
+            </LinearLayout>
+        </LinearLayout>
+    </LinearLayout>
+
+</androidx.constraintlayout.widget.ConstraintLayout>

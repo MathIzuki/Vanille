@@ -1,0 +1,17 @@
+<resources>
+    <string name="app_name">Vanille for ever</string>
+    <string name="ajouter">AJOUTER</string>
+    <string name="calculer">CALCULER</string>
+    <string name="label_mail">Mail : </string>
+    <string name="label_nom">Nom : </string>
+    <string name="label_prenom">Prenom : </string>
+    <string name="label_adresse">Adresse :</string>
+    <string name="label_total">Total : </string>
+    <string name="bt_modifier">MODIFIER</string>
+    <string name="bt_valider">VALIDER</string>
+    <string name="bt_annuler">ANNULER</string>
+    <string name="bt_revenir">REVENIR AUX BONBONS</string>
+    <string name="bt_terminercommande">TERMINER LA COMMANDE</string>
+    <string name="montant">0</string>
+    <string name="bt_accesappli">ACCÉDER A L\'APPLICATION</string>
+</resources>

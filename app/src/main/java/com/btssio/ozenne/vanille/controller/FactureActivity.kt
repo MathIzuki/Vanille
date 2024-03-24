@@ -33,10 +33,10 @@ class FactureActivity : AppCompatActivity() {
         //récupération du client
         val leClientRecupere = ClientRepository.recupererLeClient(this)
         Log.i("Client récupéré", leClientRecupere.toString())
-        editNom.setText(leClientRecupere?.nom ?: "A SAISIR")
-        editPrenom.setText(leClientRecupere?.prenom ?: "A SAISIR")
-        editAdresse.setText(leClientRecupere?.adresse ?: "A SAISIR")
-        editMail.setText(leClientRecupere?.mail ?: "A SAISIR")
+        editNom.setText(leClientRecupere?.nom ?: "")
+        editPrenom.setText(leClientRecupere?.prenom ?: "")
+        editAdresse.setText(leClientRecupere?.adresse ?: "")
+        editMail.setText(leClientRecupere?.mail ?: "")
 
 
         btValider.setOnClickListener {
@@ -68,7 +68,6 @@ class FactureActivity : AppCompatActivity() {
 
         btAnnuler.setOnClickListener() {
             // Effacer les informations du client
-            ClientRepository.effacerLeClient(this);
             val intention = Intent(this, MainActivity::class.java)
             commandeEnCours.lignesCommande.clear()
             startActivity(intention)
